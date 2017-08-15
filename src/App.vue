@@ -1,22 +1,31 @@
 <template lang="pug">
   #app
-    img( src="./assets/logo.png" )
+    navigation
+    .block
+      b-icon(icon="person")
+      b-icon(icon="home")
+      b-icon(icon="dashboard")
+      b-icon(icon="pets")
     router-view
 </template>
 
 <script>
+import Navigation from '@/components/Navigation';
+
 export default {
   name: 'app',
+  components: {
+    Navigation,
+  },
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000;
 }
 </style>
