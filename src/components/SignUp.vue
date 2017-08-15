@@ -54,7 +54,7 @@ export default {
     submitForm() {
       // TODO implement axios and cookie
       console.log('submitted');
-      this.$cookie.set('test', 'asdfadsfasdfadsf');
+      this.$cookie.set('test', 'tester');
     },
   },
 };
