@@ -1,14 +1,6 @@
 <template lang="pug">
   #app
-    nav.navbar
-        .navbar-brand
-          a.navbar-item(href="/")
-            b-icon(class="logo" icon="pets")
-            span.company Pawfolio
-          .navbar-burger.burger
-            span
-            span
-            span
+    navigation
     .block
       b-icon(icon="person")
       b-icon(icon="home")
@@ -18,8 +10,13 @@
 </template>
 
 <script>
+import Navigation from '@/components/Navigation';
+
 export default {
   name: 'app',
+  components: {
+    Navigation,
+  },
 };
 </script>
 
@@ -30,14 +27,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000;
-  margin-left: 20px;
-  margin-top: 10px;
-
-  .company {
-    margin-left: 10px;
-    display: inline-block;
-    font-size: 30px;
-  }
-
 }
 </style>
