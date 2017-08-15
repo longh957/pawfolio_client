@@ -52,7 +52,9 @@ export default {
   },
   methods: {
     submitForm() {
+      // TODO implement axios and cookie
       console.log('submitted');
+      this.$cookie.set('test', 'asdfadsfasdfadsf');
     },
   },
 };
