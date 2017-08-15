@@ -1,6 +1,19 @@
 <template lang="pug">
   #app
-    img( src="./assets/logo.png" )
+    nav.navbar
+        .navbar-brand
+          a.navbar-item(href="/")
+            b-icon(class="logo" icon="pets")
+            span.company Pawfolio
+          .navbar-burger.burger
+            span
+            span
+            span
+    .block
+      b-icon(icon="person")
+      b-icon(icon="home")
+      b-icon(icon="dashboard")
+      b-icon(icon="pets")
     router-view
 </template>
 
@@ -10,13 +23,21 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000;
+  margin-left: 20px;
+  margin-top: 10px;
+
+  .company {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 30px;
+  }
+
 }
 </style>
