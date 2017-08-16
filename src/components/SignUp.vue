@@ -13,29 +13,34 @@
           b-field(label="Name")
             b-input(
               maxlength="30"
+              v-model="name"
             )
           b-field(
             label="Email"
-            v-bind:type="valid"
-            v-bind:message="emailMessage"
           )
             b-input(
               type="email"
+              v-model="email"
               maxlength="30"
+              required="true"
             )
           b-field(
             label="Password"
           )
             b-input(
               type="password"
+              v-model="password"
               maxlength="30"
+              required="true"
             )
           b-field(
             label="Password Confirmation"
           )
             b-input(
               type="password"
+              v-model="passwordConfirmation"
               maxlength="30"
+              required="true"
             )
           b-field
             button.button.is-success(type="submit") Submit
@@ -46,15 +51,30 @@ export default {
   name: 'signup',
   data() {
     return {
-      valid: 'is-danger',
-      emailMessage: 'Email is Invalid',
+      name: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
     };
   },
   methods: {
     submitForm() {
       // TODO implement axios and cookie
+
+      const payload = {
+        name: this.name,
+        password: this.password,
+        email: this.email,
+      };
+
+      this.axios.post('http://api.pawfol.io/api/v1/registration', payload)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
       console.log('submitted');
-      this.$cookie.set('test', 'tester');
     },
   },
 };
