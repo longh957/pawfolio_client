@@ -16,7 +16,7 @@
         .navbar-start
           a.navbar-item(href="/") Sign In
         .navbar-end
-          a.navbar-item(href="/") Sign Up
+          router-link.navbar-item(to="/sign-up") Sign up
 </template>
 <script>
   export default {
