@@ -8,12 +8,7 @@
           v-on:submit.prevent="submitForm"
 
         )
-          h1 Register
-          b-field(label="Name")
-            b-input(
-              maxlength="30"
-              v-model="name"
-            )
+          h1 Sign In
           b-field(
             label="Email"
           )
@@ -32,28 +27,17 @@
               maxlength="30"
               required="true"
             )
-          b-field(
-            label="Password Confirmation"
-          )
-            b-input(
-              type="password"
-              v-model="passwordConfirmation"
-              maxlength="30"
-              required="true"
-            )
           b-field
             button.button.is-success(type="submit") Submit
         .column
 </template>
 <script>
 export default {
-  name: 'signup',
+  name: 'signin',
   data() {
     return {
-      name: '',
       email: '',
       password: '',
-      passwordConfirmation: '',
     };
   },
   methods: {
@@ -61,37 +45,34 @@ export default {
       // TODO implement axios and cookie
 
       const payload = {
-        name: this.name,
         password: this.password,
-        email: this.email,
+        user: this.email,
       };
 
-      this.axios.post(`${this.$store.state.apiUrl}/api/v1/registration`, payload)
+      this.axios.post(`${this.$store.state.apiUrl}/api/v1/authentication`, payload)
         .then((response) => {
           if (response.data) {
+            const token = response.data.token;
+            this.$store.state.token = token;
+            this.$store.state.loggedIn = true;
             this.$toast.open({
               duration: 5000,
-              message: 'Successfully Created Account, Please Log In.',
+              message: 'Thanks for Signing in',
               type: 'is-success',
             });
-            this.$router.push('/sign-in');
+            this.$router.push('/');
           }
+          console.log(response.data);
         })
         .catch((error) => {
-          if (error.response && error.response.data) {
-            const message = error.response.data.error[0];
-            this.$toast.open({
-              duration: 5000,
-              message,
-              type: 'is-danger',
-            });
-          }
+          console.log(error.response.data);
         });
+      console.log('submitted');
     },
   },
 };
 </script>
-<style scoped lang="scss">
+<style scoped land="scss">
   h1 {
     font-size: 40px;
     margin-bottom: 40px;

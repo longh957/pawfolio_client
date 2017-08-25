@@ -24,6 +24,7 @@ PAW.store = new Vuex.Store({
   state: {
     loggedIn: false,
     apiUrl: process.env.NODE_ENV === 'production' ? 'https://fetch.pawfol.io' : 'http://localhost:3000',
+    token: null,
   },
 });
 
