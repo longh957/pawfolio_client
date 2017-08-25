@@ -62,12 +62,16 @@ export default {
             });
             this.$router.push('/');
           }
-          console.log(response.data);
         })
         .catch((error) => {
-          console.log(error.response.data);
+          if (error && error.response) {
+            this.$toast.open({
+              duration: 5000,
+              message: 'Check Your Email and Password and Try Again.',
+              type: 'is-danger',
+            });
+          }
         });
-      console.log('submitted');
     },
   },
 };
