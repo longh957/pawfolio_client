@@ -13,9 +13,9 @@
           span
           span
       #mobile.navbar-menu(v-bind:class="{ 'is-active': open }")
-        .navbar-start
+        .navbar-start(v-if="!$store.state.loggedIn")
           a.navbar-item(href="/") Sign In
-        .navbar-end
+        .navbar-end(v-if="!$store.state.loggedIn")
           router-link.navbar-item(to="/sign-up") Sign up
 </template>
 <script>
